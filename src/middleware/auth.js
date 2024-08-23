@@ -22,7 +22,6 @@ const authorizeAdmin = (req, res, next) => {
     return res.status(403).json({ message: "Admin access required" });
   }
   next();
-  ww;
 };
 
 module.exports = { authenticateToken, authorizeAdmin };
