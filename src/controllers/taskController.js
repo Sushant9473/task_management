@@ -65,6 +65,11 @@ const deleteTask = async (req, res) => {
 
 const getAllTasks = async (req, res) => {
   try {
+    if (req.user.role !== "admin") {
+      return res
+        .status(403)
+        .json({ message: "Access denied. Admin role required." });
+    }
     const tasks = await taskService.getAllTasks();
     res.json(tasks);
   } catch (error) {
